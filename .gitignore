@@ -1,0 +1,5 @@
+**/*.go
+/vendor/
+.git/
+.vscode/
+.DS_Store
