@@ -1,4 +1,3 @@
-**/*.go
 /vendor/
 .git/
 .vscode/
