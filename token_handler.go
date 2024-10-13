@@ -5,6 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strconv"
 	"time"
 
@@ -80,7 +82,11 @@ func GenerateJWTToken(userID int, tokenType string) (appToken *AppToken, err err
 }
 
 func VerifyTokenAndGetClaims(token, tokenType string) (claims jwt.MapClaims, err error) {
-	data, err := os.ReadFile("jwt_config.json")
+	_, f, _, _ := runtime.Caller(0)
+	basePath := filepath.Dir(f)
+	path := filepath.Join(basePath, "jwt_config.json")
+	data, err := os.ReadFile(path)
+
 	if err != nil {
 		_ = fmt.Errorf("fatal error in config file: %s", err.Error())
 		return
