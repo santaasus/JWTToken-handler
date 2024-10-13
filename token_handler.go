@@ -43,9 +43,9 @@ func GenerateJWTToken(userID int, tokenType string) (appToken *AppToken, err err
 	tokenTimeUnix := time.Duration(tokenTime)
 	switch tokenType {
 	case Access:
-		tokenTimeUnix *= time.Minute
+		tokenTimeUnix *= time.Hour * 10
 	case Refresh:
-		tokenTimeUnix *= time.Hour
+		tokenTimeUnix *= time.Hour * 36
 	default:
 		err = errors.New("invalid token type")
 	}
