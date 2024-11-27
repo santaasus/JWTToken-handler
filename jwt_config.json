@@ -1,0 +1,6 @@
+{
+    "JWTAcessSecure": "JWTAcessSecureTest",
+    "JWTRefreshSecure": "JWTRefreshSecureTest",
+    "JWTAcessTimeMinute": 10,
+    "JWTRefreshTimeHour": 10
+}
