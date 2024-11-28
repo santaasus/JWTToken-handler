@@ -12,7 +12,7 @@ import (
 	domainErrors "github.com/santaasus/errors-handler"
 )
 
-func GenerateJWTToken(id string, tokenType string) (appToken *AppToken, err error) {
+func GenerateJWTToken(id string, tokenType string, payload map[string]any) (appToken *AppToken, err error) {
 	data, err := os.ReadFile(AbsPath("jwt_config.json"))
 
 	if err != nil {
@@ -57,8 +57,9 @@ func GenerateJWTToken(id string, tokenType string) (appToken *AppToken, err erro
 	tokenExpirationTime := time.Now().Add(tokenTimeUnix)
 
 	claims := &TokenClaims{
-		ID:   id,
-		Type: tokenType,
+		ID:      id,
+		Type:    tokenType,
+		Payload: payload,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(tokenExpirationTime),
 		},

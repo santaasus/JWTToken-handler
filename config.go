@@ -11,8 +11,9 @@ const (
 )
 
 type TokenClaims struct {
-	ID   string `json:"id"`
-	Type string `json:"type"`
+	ID      string         `json:"id"`
+	Type    string         `json:"type"`
+	Payload map[string]any `json:"payload"`
 	jwt.RegisteredClaims
 }
 
